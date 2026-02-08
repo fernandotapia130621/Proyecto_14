@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación San Valentín 💝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Corazones flotantes de fondo */
+        .heart-bg {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            animation: float 15s infinite;
+        }
+
+        .heart-bg:before,
+        .heart-bg:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .heart-bg:before {
+            left: -10px;
+        }
+
+        .heart-bg:after {
+            top: -10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart-icon {
+            font-size: 80px;
+            color: #e74c3c;
+            animation: heartbeat 1.5s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .subtitle {
+            color: #e74c3c;
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .message {
+            color: #34495e;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Galería de fotos */
+        .photo-gallery {
+            margin: 40px 0;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-radius: 20px;
+        }
+
+        .photo-gallery h2 {
+            color: #d63031;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+        }
+
+        .photos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            background: white;
+            padding: 10px;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .photo-caption {
+            margin-top: 10px;
+            color: #2c3e50;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        /* Foto destacada */
+        .featured-photo {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .featured-photo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 5px solid white;
+        }
+
+        .featured-caption {
+            margin-top: 15px;
+            color: #e74c3c;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        .details {
+            background: linear-gradient(135deg, #a29bfe 0%, #fd79a8 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            color: #2c3e50;
+        }
+
+        .details h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #6c5ce7;
+        }
+
+        .details p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        /* Botones */
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.6);
+        }
+
+        .button-no {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            box-shadow: 0 5px 15px rgba(127, 140, 141, 0.4);
+        }
+
+        .button-no:hover {
+            box-shadow: 0 10px 25px rgba(127, 140, 141, 0.6);
+        }
+
+        .button-big {
+            font-size: 2em !important;
+            padding: 25px 60px !important;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Botón de música */
+        .music-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255, 255, 255, 0.95);
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1em;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .music-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .music-icon {
+            font-size: 1.2em;
+            animation: musicPulse 1.5s infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        .envelope {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: swing 2s infinite;
+        }
+
+        @keyframes swing {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* Modal de imagen ampliada */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Modal de confirmación NO */
+        .confirm-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 500;
+        }
+
+        .confirm-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            animation: shake 0.5s;
+            max-width: 90%;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
+        .confirm-content h2 {
+            color: #e74c3c;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .confirm-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .confirm-buttons button {
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .confirm-yes {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .confirm-no-final {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            color: white;
+        }
+
+        /* Modal de respuesta SI */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            animation: modalAppear 0.5s;
+            max-width: 90%;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal h2 {
+            color: #e74c3c;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .modal p {
+            color: #2c3e50;
+            font-size: 1.2em;
+        }
+
+        /* Modal TE FREGASTE */
+        .fregaste-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 600;
+        }
+
+        .fregaste-content {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            animation: explosion 0.6s;
+            max-width: 90%;
+        }
+
+        @keyframes explosion {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .fregaste-content h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Pantalla de inicio con música */
+        .start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .start-button {
+            padding: 20px 50px;
+            font-size: 1.5em;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            font-family: 'Georgia', serif;
+            color: #e74c3c;
+        }
+
+        .start-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .start-text {
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .photos-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .photo-item img {
+                height: 150px;
+            }
+
+            .button-big {
+                font-size: 1.5em !important;
+                padding: 20px 40px !important;
+            }
+
+            .music-button {
+                top: 10px;
+                right: 10px;
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+
+            .start-text {
+                font-size: 1.5em;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Pantalla de inicio -->
+    <div class="start-screen" id="startScreen">
+        <div class="start-text">💕 ¡Hay una invitación especial para ti! 💕</div>
+        <button class="start-button" onclick="iniciarExperiencia()">
+            Abrir Invitación 💌
+        </button>
+    </div>
+
+    <!-- Audios -->
+    <audio id="backgroundMusic" loop>
+        <source src="musica.flac" type="audio/mpeg">
+    </audio>
+    
+    <audio id="successSound">
+        <source src="success.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="noSound">
+        <source src="error.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Botón de control de música -->
+    <button class="music-button" id="musicButton" onclick="toggleMusic()" style="display: none;">
+        <span class="music-icon" id="musicIcon">🎵</span>
+        <span id="musicText">Pausar</span>
+    </button>
+
+    <!-- Corazones flotantes -->
+    <script>
+        for(let i = 0; i < 15; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'heart-bg';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 15 + 's';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            document.body.appendChild(heart);
+        }
+    </script>
+
+    <div class="container">
+        <div class="envelope">💌</div>
+        <div class="heart-icon">❤️</div>
+        
+        <h1>Invitación Especial</h1>
+        <p class="subtitle">Para celebrar nuestro amor este San Valentín</p>
+        
+        <!-- Foto destacada -->
+        <div class="featured-photo" id="featuredPhotoContainer">
+            <!-- Se cargará dinámicamente -->
+        </div>
+
+        <p class="message">
+            Joyce, mi princesa, mi bbsota, mi vida, mi todo 💕<br><br>
+            Este 14 de febrero quiero celebrar contigo nuestro primer San Valentín<br>
+            (aunque será el 10 no el 14 xD).<br><br>
+            Cada momento a tu lado ha sido especial, y quiero que este día sea inolvidable.
+        </p>
+
+        <!-- Galería de fotos -->
+        <div class="photo-gallery">
+            <h2>📸 Nuestros Momentos</h2>
+            <div class="photos-container" id="photosContainer">
+                <!-- Las fotos se cargarán automáticamente -->
+            </div>
+            <p style="color: #2c3e50; font-style: italic;">
+                Y muchos más momentos por crear juntos...
+            </p>
+        </div>
+
+        <div class="details">
+            <h2>📅 Detalles de nuestra Cita</h2>
+            <p><strong>Fecha:</strong> 10 de Febrero, 2026</p>
+            <p><strong>Hora:</strong> 6:00 PM</p>
+            <p><strong>Lugar:</strong> Sorpresa</p>
+            <p><strong>Código de vestimenta:</strong> Lo que te haga sentir hermosa y bella como siempre</p>
+        </div>
+
+        <p class="message">
+            Prepárate para una noche llena de mucho amor.
+            ¡No puedo esperar para verte! 
+        </p>
+
+        <div class="buttons-container" id="buttonsContainer">
+            <button class="button" id="btnSi" onclick="responderSi()">
+                ¡Acepto! 💝
+            </button>
+            <button class="button button-no" id="btnNo" onclick="responderNo()">
+                No acepto 😔
+            </button>
+        </div>
+
+        <p class="footer">
+            Con todo mi amor,<br>
+            Fer 💕
+        </p>
+    </div>
+
+    <!-- Modal para imagen ampliada -->
+    <div class="image-modal" id="imageModal" onclick="closeImageModal()">
+        <span class="close-modal">&times;</span>
+        <img id="modalImage" src="" alt="Imagen ampliada">
+    </div>
+
+    <!-- Modal de confirmación NO -->
+    <div class="confirm-modal" id="confirmModal">
+        <div class="confirm-content">
+            <div class="heart-icon" style="font-size: 60px;">😢</div>
+            <h2>¿Estás segura?</h2>
+            <p style="color: #2c3e50; font-size: 1.2em; margin: 20px 0;">
+                ¿De verdad no quieres pasar este día especial conmigo?
+            </p>
+            <div class="confirm-buttons">
+                <button class="confirm-yes" onclick="confirmNo()">Sí, estoy segura</button>
+                <button class="confirm-no-final" onclick="cerrarConfirm()">No, mejor acepto</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal TE FREGASTE -->
+    <div class="fregaste-modal" id="fregasteModal">
+        <div class="fregaste-content">
+            <h2>¡TE FREGASTE! 😈</h2>
+            <p style="font-size: 1.5em; margin: 20px 0;">
+                ¡Ahora no tienes opción!<br>
+                Solo puedes aceptar 😂💕
+            </p>
+            <div style="font-size: 100px; margin: 20px 0;">😘</div>
+        </div>
+    </div>
+
+    <!-- Modal de respuesta SI -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="heart-icon">💖</div>
+            <h2>¡Perfecto!</h2>
+            <p>¡Será una noche increíble! 🎉<br><br>
+            Te quiero mucho y no puedo esperar para celebrar juntos ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuración de fotos - AQUÍ PONES LOS NOMBRES DE TUS FOTOS
+        const fotoConfig = {
+            fotoPrincipal: {
+                src: 'principal.jpeg',  // Foto destacada
+                caption: 'Nuestro primer mes juntos 💕'
+            },
+            fotosGaleria: [
+                { src: 'foto1.jpeg', caption: 'Nuestra primer viaje juntos ✨' },
+                { src: 'foto2.jpeg', caption: 'Tú siempre amante de las fotos jeje😊' },
+                { src: 'foto3.jpeg', caption: 'Donde iniciamos juntitos 💑' },
+                { src: 'foto4.jpeg', caption: 'Aventuras contigo🌟' }
+            ]
+        };
+
+        // Variables de control de música
+        let musicPlaying = false;
+
+        // Iniciar experiencia
+        function iniciarExperiencia() {
+            // Ocultar pantalla de inicio
+            document.getElementById('startScreen').style.display = 'none';
+            
+            // Mostrar botón de música
+            document.getElementById('musicButton').style.display = 'flex';
+            
+            // Intentar reproducir música
+            const music = document.getElementById('backgroundMusic');
+            music.play().then(() => {
+                musicPlaying = true;
+                document.getElementById('musicIcon').style.animationPlayState = 'running';
+            }).catch(err => {
+                console.log('Música bloqueada por el navegador');
+                musicPlaying = false;
+                document.getElementById('musicText').textContent = 'Reproducir';
+                document.getElementById('musicIcon').textContent = '🔇';
+            });
+        }
+
+        // Control de música
+        function toggleMusic() {
+            const music = document.getElementById('backgroundMusic');
+            const icon = document.getElementById('musicIcon');
+            const text = document.getElementById('musicText');
+            
+            if (musicPlaying) {
+                music.pause();
+                musicPlaying = false;
+                text.textContent = 'Reproducir';
+                icon.textContent = '🔇';
+                icon.style.animationPlayState = 'paused';
+            } else {
+                music.play();
+                musicPlaying = true;
+                text.textContent = 'Pausar';
+                icon.textContent = '🎵';
+                icon.style.animationPlayState = 'running';
+            }
+        }
+
+        // Cargar foto principal
+        function cargarFotoPrincipal() {
+            const container = document.getElementById('featuredPhotoContainer');
+            container.innerHTML = `
+                <img src="${fotoConfig.fotoPrincipal.src}" alt="Nosotros" onclick="openImageModal(this.src)">
+                <p class="featured-caption">${fotoConfig.fotoPrincipal.caption}</p>
+            `;
+        }
+
+        // Cargar galería de fotos
+        function cargarGaleria() {
+            const container = document.getElementById('photosContainer');
+            container.innerHTML = '';
+            
+            fotoConfig.fotosGaleria.forEach(foto => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-item';
+                photoItem.innerHTML = `
+                    <img src="${foto.src}" alt="Momento especial" onclick="openImageModal(this.src)">
+                    <p class="photo-caption">${foto.caption}</p>
+                `;
+                container.appendChild(photoItem);
+            });
+        }
+
+        // Cargar fotos al inicio
+        window.addEventListener('load', function() {
+            cargarFotoPrincipal();
+            cargarGaleria();
+        });
+
+        // Funciones de botones
+        function responderNo() {
+            // Reproducir sonido de "no"
+            const noSound = document.getElementById('noSound');
+            noSound.play().catch(err => console.log('Error al reproducir sonido'));
+            
+            document.getElementById('confirmModal').style.display = 'flex';
+        }
+
+        function cerrarConfirm() {
+            document.getElementById('confirmModal').style.display = 'none';
+            // Automáticamente acepta
+            responderSi();
+        }
+
+        function confirmNo() {
+            // Reproducir sonido de "no" otra vez
+            const noSound = document.getElementById('noSound');
+            noSound.play().catch(err => console.log('Error al reproducir sonido'));
+            
+            // Cerrar modal de confirmación
+            document.getElementById('confirmModal').style.display = 'none';
+            
+            // Mostrar modal TE FREGASTE
+            document.getElementById('fregasteModal').style.display = 'flex';
+            
+            // Después de 3 segundos, cerrar y transformar botones
+            setTimeout(() => {
+                document.getElementById('fregasteModal').style.display = 'none';
+                
+                // Eliminar botón NO y hacer el SÍ grande
+                const btnNo = document.getElementById('btnNo');
+                const btnSi = document.getElementById('btnSi');
+                
+                btnNo.style.display = 'none';
+                btnSi.classList.add('button-big');
+                btnSi.innerHTML = '¡TIENES QUE ACEPTAR! 💝';
+            }, 3000);
+        }
+
+        function responderSi() {
+            // Reproducir sonido de éxito
+            const successSound = document.getElementById('successSound');
+            successSound.play().catch(err => console.log('Error al reproducir sonido'));
+            
+            document.getElementById('modal').style.display = 'flex';
+            
+            // Crear más corazones cuando acepta
+            for(let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    let heart = document.createElement('div');
+                    heart.innerHTML = '❤️';
+                    heart.style.position = 'fixed';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = '100%';
+                    heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+                    heart.style.animation = 'float 3s forwards';
+                    heart.style.zIndex = '1000';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 3000);
+                }, i * 100);
+            }
+        }
+
+        // Cerrar modal de respuesta al hacer clic
+        document.getElementById('modal').addEventListener('click', function() {
+            this.style.display = 'none';
+        });
+
+        // Funciones para modal de imagen
+        function openImageModal(src) {
+            document.getElementById('imageModal').style.display = 'flex';
+            document.getElementById('modalImage').src = src;
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Cerrar con tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if(e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html>
